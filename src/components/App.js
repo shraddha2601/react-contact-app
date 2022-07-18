@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {uuid} from "uuidv4";
+// import {uuid} from "uuidv4";
 import './App.css';
 import Header from "./Header";
 import AddContact from "./AddContact";
@@ -12,7 +12,7 @@ function App() {
 
   const addContactHandler = (contact) =>{
     console.log(contact);
-    setContacts([...contacts, {id: uuid(), ...contact}])
+    setContacts([...contacts, contact])
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify([...contacts, contact]));
 
   }
@@ -38,7 +38,8 @@ function App() {
    <div className="ui container">
     <Header/>
     <AddContact addContactHandler={addContactHandler}/> 
-    <ContactList contacts={contacts} getContactId = {removeContactHandler}/>
+    <ContactList contacts={contacts}/>
+    {/* <ContactList contacts={contacts} getContactId = {removeContactHandler}/> */}
    </div>
   );
 }
